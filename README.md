@@ -6,7 +6,7 @@ PostgreSQL, Puma, systemd, Nginx, and optional Let's Encrypt TLS.
 > **Target OS:** Ubuntu Server 24.04. The installer checks the OS
 > release and exits on other versions.
 >
-> **Default URL:** `https://pm.netaport.com`
+> **Default URL:** `https://pm.example.com`
 >
 > This installer is tailored for a server with an existing Nginx
 > installation. Review the script and take backups before running it on
@@ -83,7 +83,7 @@ sudo env DOMAIN=redmine.example.com LE_EMAIL=admin@example.com bash install-redm
   -----------------------------------------------------------------------
   Variable                Default                 Purpose
   ----------------------- ----------------------- -----------------------
-  `DOMAIN`                `pm.netaport.com`       Host name and Redmine
+  `DOMAIN`                `pm.example.com`       Host name and Redmine
                                                   URL
 
   `REDMINE_VERSION`       `7.0.2`                 Redmine release; a
@@ -130,7 +130,7 @@ The installer prints the URL, paths, database port, and credentials
 location. The default state file is:
 
 ``` text
-/root/.redmine-pm.netaport.com.env
+/root/.redmine-pm.example.com.env
 ```
 
 For a custom domain, the filename includes that domain. It contains
@@ -148,7 +148,7 @@ sudo systemctl status redmine --no-pager
 sudo journalctl -u redmine -n 100 --no-pager
 sudo nginx -t
 curl -I http://127.0.0.1:3080/
-curl -I https://pm.netaport.com/
+curl -I https://pm.example.com/
 ```
 
 Replace the domain and port if customized. If TLS was skipped, test the
@@ -162,7 +162,7 @@ HTTP URL instead.
   Versioned application directory   `/opt/redmine/redmine-7.0.2`
   Private Ruby                      `/opt/redmine/ruby`
   Attachments                       `/opt/redmine/files`
-  Nginx virtual host                `/etc/nginx/sites-available/pm.netaport.com`
+  Nginx virtual host                `/etc/nginx/sites-available/pm.example.com`
   systemd unit                      `/etc/systemd/system/redmine.service`
   Installer log                     `/var/log/redmine-install.log`
   Redmine production log            `/opt/redmine/current/log/production.log`
